@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Saboteur - Nueva partida</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<meta charset="utf-8"/>
+</head>
+<body>
+
+<%- include header %>
+
+<div class="content">
+	<h1>Nueva partida</h1>
+
+	<div class="tabla"> 
+		<form action="procesarFormularioCrearPartida.html" method="post">
+		
+			<div class="row">
+				<input type="text" placeholder="Nombre de la partida" name="nombre" value="<%= valores.nombre%>">
+				<% if(errores.nombre != ''){ %>
+					<div class="cell">
+						<p class="rojo">&#9888;</p>
+					</div>
+				<% } %>	
+			</div>	
+			
+			<div class="row"> 
+				<input type="number" placeholder="Número máximo de jugadores (3-7)" name="players" min="3" max="7" value="<%= valores.numero%>"/>
+				<% if(errores.players != ''){ %>
+					<div class="cell">
+						<p class="rojo">&#9888;</p>
+					</div>
+				<% } %>	
+			</div>
+
+			<div class="row">
+				<div class="cell">
+					<input type="submit" value="Crear partida">
+				</div>
+			</div>
+			
+		</form>
+
+	</div>
+	
+</div>
+
+
+
+
+<footer></footer>
+
+
+</body>
+</html>

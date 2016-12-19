@@ -1,0 +1,23 @@
+{
+  "name": "practica_1",
+  "version": "1.0.0",
+  "description": "practica 1",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Miguel y Carlos",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "express-validator": "^3.0.0",
+    "multer": "^1.2.0",
+    "mysql": "^2.12.0",
+    "underscore": "^1.8.3"
+  }
+}

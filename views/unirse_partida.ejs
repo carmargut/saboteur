@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Saboteur - Unirse a partida</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<meta charset="utf-8"/>
+</head>
+<body>
+
+<%- include header %>
+
+<div class="content">
+	<h1>Unirse a partida</h1>
+	<p>A continuación se muestra una lista con las partidas abiertas que admiten jugadores</p>
+
+	<table class="tabla-partidas">
+		<tr>
+			<td class="marron">Nombre</td>
+			<td class="marron">Fecha</td>
+			<td class="marron">Jugadores</td>
+			
+		</tr>
+		<% partidas_abiertas.forEach(function(p) { %>
+		<tr>
+			<td><%= p.nombre %></td>
+			<td><%= p.fecha.getDate() %>/<%= p.fecha.getMonth()+1 %>/<%= p.fecha.getFullYear()%></td>
+			<td><%= p.numero_jugadores %>/<%= p.numero_maximo_jugadores%></td>
+			<td>
+				<a href="/unirsePartida/<%= p.id%>">Unirse</a>
+			</td>
+		</tr>
+		<% }); %>
+	</table>
+
+
+	<a href="partidas.html" class="boton-volver marron">Volver</a>
+</div>
+<footer></footer>
+
+
+</body>
+</html>

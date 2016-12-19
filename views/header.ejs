@@ -1,0 +1,37 @@
+<header>
+	<div class="logo"><a href="/"><img src="RecursosGraficosP1/Logo.png"/></a></div>
+	<% if(typeof nombre_usuario === "undefined"){%>
+		<div class="usuario"> No estás conectado </div>
+	<% } else { %>
+		<div class="usuario"><%= nombre_usuario %></div>
+	<% }%>
+</header>
+
+<nav class="menu">
+	<% if(typeof nombre_usuario === "undefined"){%>
+		<ul>
+			<li><a href="login.html">Login </a><span></span></li>
+			<li><a href="registro.html">Nuevo Usuario</a><span></span></li>
+		</ul>
+	<% } else { %>
+		<ul>
+			<li><a href="/desconectar.html">Desconectar </a><span></span></li>
+			<li><a href="/unirse_partida.html">Unirse a partida </a><span></span></li>
+			<li><a href="/nueva_partida.html">Crear partida </a><span></span></li>
+		</ul>
+	<% }%>
+
+</nav>
+
+
+<% if(mensaje_usuario.tipo === "info"){%>
+	<div class="info-msg"><%= mensaje_usuario.texto%></div>
+<% }else if(mensaje_usuario.tipo === "exito"){%>
+	<div class="success-msg"><%= mensaje_usuario.texto%></div>
+<% }else if(mensaje_usuario.tipo === "warning"){%>
+	<div class="warning-msg"><%= mensaje_usuario.texto%></div>
+<% }else if(mensaje_usuario.tipo === "error"){%>
+	<div class="error-msg"><%= mensaje_usuario.texto%></div>
+<% }%>
+
+	

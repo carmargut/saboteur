@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Saboteur - Login</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<meta charset="utf-8"/>
+</head>
+<body>
+
+<%- include header %>
+
+<div class="content">
+	<form name="formlogin" action="procesarFormularioLogin.html" method="get">
+		<div class="row">
+			<div class="cell">
+		 		<input type="text" placeholder="Nick" name="user" value="<%= usuario%>">
+		 	</div>
+		 	<% if(mensaje_error_1 != ''){ %>
+				<div>
+					<p class="rojo">&#9888;</p>
+				</div>
+			<% } %>	 	
+		</div>
+		<div class="row">
+			<div class="cell"> 
+				<input type="password" placeholder="Contraseña" name="pass">
+			</div>
+			<% if(mensaje_error_2 != ''){ %>
+				<div>
+					<p class="rojo">&#9888;</p>
+				</div>
+			<% } %>
+		</div>
+		<div class="cell">
+		<input type="submit" value="Identificarse">
+		
+		</div>
+	</form>
+</div>
+<footer></footer>
+
+
+</body>
+</html>

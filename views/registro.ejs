@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Saboteur - Registro</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<meta charset="utf-8"/>
+</head>
+<body>
+
+<%- include header %>
+
+<div class="content">
+	<h1>Nuevo Usuario</h1>
+	<p>Introduce tus datos de usuario. Los campos marcados con * son obligatorios:</p>
+	<form action="procesarFormulario.html" method="post" enctype="multipart/form-data">
+
+		<div class="row">	
+			<div class="cell"><p><input type="text" placeholder="Usuario *" name="user" value="<%= usuario.nick%>"></p></div>
+			<% if(mensaje_error_user != ''){ %>
+				<div class="cell">
+					<p class="rojo">&#9888;</p>
+				</div>
+			<% } %>	
+		</div>
+
+		<div class="row">
+			<div class="cell"><p><input type="password" placeholder="Contraseña *" name="pass"></p></div>
+			<% if(mensaje_error_pass != ''){ %>
+				<div class="cell">
+					<p class="rojo">&#9888;</p>
+				</div>
+			<% } %>
+		</div>
+		
+		<div class="row">
+			<div class="cell"><p><input type="text" placeholder="Nombre completo *" name="nombre" value="<%= usuario.nombre%>"></p></div>
+			<% if(mensaje_error_nombre != ''){ %>
+				<div class="cell">
+					<p class="rojo">&#9888;</p>
+				</div>
+			<% } %>
+		</div>
+
+		<div class="sub-content">
+			<div class="row">
+					
+				<div class="cell">
+				<% if(usuario.sexo === "Hombre"){ %>
+					Hombre<input type="radio" name="sexo" value="Hombre" checked>
+				<% }else{ %>
+					Hombre<input type="radio" name="sexo" value="Hombre">
+				<% } %>
+				</div>
+				<div class="cell">
+				<% if(usuario.sexo === "Mujer"){ %>
+					Mujer<input type="radio" name="sexo" value="Mujer" checked>
+				<% }else{ %>
+					Mujer<input type="radio" name="sexo" value="Mujer">
+				<% } %>
+				</div>
+			</div>		
+		</div>
+
+		<div class="row">
+			<p>Foto:<input name="file"  type="file" /></p>
+		</div>
+
+		Fecha de nacimiento:
+		<div class="row">
+			<div class="cell"><input type="date" placeholder="Fecha nacimiento (AAAA-MM-DD):" name="fecha_nacimiento" value="<%= usuario.fecha%>"></div>
+			<% if(mensaje_error_date != ''){ %>
+				<div class="cell">
+					<p class="rojo">&#9888;</p>
+				</div>
+			<% } %>
+		</div>
+
+		<div class="row">
+			<div class="cell boton"><p><input type="submit" value="Crear cuenta de usuario"></p></div>
+		</div>
+	</form>
+</div>
+	
+
+<footer></footer>
+
+
+</body>
+</html>
+
+
+

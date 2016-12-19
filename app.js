@@ -332,7 +332,7 @@ app.get("/partidas.html",function(request,response){
 });
 
 app.get("/cerrarPartida/:id",function(request,response){
-     if(request.cookies.nick === undefined){
+    if(request.cookies.nick === undefined){
         response.redirect("/index.html");
     }
     else{
@@ -500,7 +500,20 @@ app.post("/procesarFormularioCrearPartida.html",function(request,response){
 });
 
 
-
+app.get("/juego.html",function(request,response){
+    if(request.cookies.nick === undefined){
+        response.redirect("/index.html");
+    }
+    else{
+        response.render("juego",{
+            nombre_usuario:request.cookies.nick,
+            mensaje_usuario: {
+                tipo: "",// info, exito, warning, error
+                texto: ""
+            }
+        });
+    }
+});
 
 app.listen(config.port,function(){
     console.log("Servidor corriendo en el puerto 3000");

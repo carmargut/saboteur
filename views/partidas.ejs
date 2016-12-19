@@ -49,9 +49,9 @@
 		</tr>
 		<% partidas_activas.forEach(function(p) { %>
 		<% if(p.turno === nombre_usuario){ %>
-		<tr class="es-su-turno">
+		<tr class="es-su-turno pointer" onclick="location='juego.html'">
 		<% }else{ %>
-		<tr>
+		<tr class="pointer" onclick="location='juego.html'">
 		<% } %>
 		
 			<td><%= p.nombre %></td>

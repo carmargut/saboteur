@@ -1,7 +1,7 @@
 "use strict"
 
 module.exports = {
-	dbName: "practica",
+	dbName: "saboteur",
 	dbUser: "root",
 	dbPassword: "",
 	dbHost: "localhost",

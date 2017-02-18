@@ -1,18 +1,91 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Partida</title>
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	<meta charset="utf-8"/>
-</head>
-
-<%- include header %>
-<body>
-
-	<div class="content">
+<html lang="es">
+	<head>
+		<title>Partida</title>
+		<link rel="stylesheet" type="text/css" href="styles.css">
+		<meta charset="utf-8"/>
+	</head>
+	<body>
 		
+		<%- include header %>
+		
+		<div class="content">
+			<h1>
+				Partida: <%= partida.nombre%>
+			</h1>
+			<p>
+				Creada por: <%= partida.creador%><br/>
+				<% if(nombre_usuario === turno){%>
+					¡Es tu turno!<br/>
+				<% } else {%>
+					Turno de: <%= turno%><br/>
+				<% }%>
+				Turnos restantes: <%= partida.turnos_restantes%><br/>
+				Eres un <%= rol %><br/>
+			</p>
+		</div>	
 
-	</div>
+		<h1>
+			Tablero:
+		</h1>
+		<table class="tabla-tablero" align="center" bottom="middle">
+			<% var contador = 0; %>
+			<% for (var fila = 0; fila<7; fila++){%>
+				<tr>
+					<% for (var columna = 0; columna<7; columna++){%>
+						<% if(estado === "normal"){%>
+							<td><img class="imagen-tablero" src="<%= tablero[contador].ruta%>"></td>
+						<% } else {%>
+							<td><img class="imagen-tablero pointer" src="<%= tablero[contador].ruta%>" onclick="location='/juego/colocarCarta.html?fila=<%=fila%>&columna=<%=columna%>&partida=<%= partida.id%>&id_carta_colocada=<%=id_carta_seleccionada%>'"></td>
+						<% }%>
+						<% contador++ %>
+					<% }%>
+				</tr>
+			<% }%>
+		</table>
+		<h1>
+			Tus cartas:
+		</h1>
+		<p>Selecciona una de ellas para jugar y luego escoge dónde quieres colocarla. Si quieres descartarla, pulsa el botón de descartar que hay a pie de página.</p>
+		<table class="tabla-tablero" align="center" bottom="middle">	
+			<tr>
+				<% if(estado === "normal"){%>
+					<% cartas.forEach(function(carta){ %>
+						<% if(nombre_usuario === turno){%>
+							<td><img class="imagen-tablero pointer" src="<%= carta.ruta%>" onclick="location='/juego/juego.html?id_carta_seleccionada=<%= carta.id%>&id_partida=<%= partida.id%>'"></td>
+						<% } else {%>
+							<td><img class="imagen-tablero" src="<%= carta.ruta%>"></td>
+						<% }%>
+					<% });%>
+				<% } else {%>
+					<td>
+						<button onclick="location='/juego/descartar.html?nick=<%=nombre_usuario%>&id_partida=<%=partida.id%>&carta=<%=id_carta_seleccionada%>'">Descartar carta</button>
+					</td>
+				<% }%>
+			</tr>		
+		</table>
+		<h1>
+			Comentarios:
+		</h1>
+		<% if(comentarios.length === 0){%>
+			Aún no hay comentarios. Anímate a escribir alguno.
+		<% } else {%>
+			<% comentarios.forEach(function(comentario){ %>
+						<p><strong><%= comentario.nick %>: </strong> <%= comentario.comentario %></p>
+			<% });%>
+		<% }%>
 
-</body>
+		<form action="/partida/ponerComentario.html" method="get">
+			<div class="row">
+				<textarea name="comentario" rows="10" cols="40" placeholder="Escribe aquí el comentario"></textarea>
+			</div>
+			<dir style="display:none"><input type="text" name="id_partida" value="<%= partida.id%>"></dir>
+			<div class="row">
+				<div class="cell boton"><p><input type="submit" value="Subir comentario"></p></div>
+			</div>
+		</form>
+
+	</body>
+
+	<footer></footer>
 </html>

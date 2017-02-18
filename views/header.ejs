@@ -10,14 +10,14 @@
 <nav class="menu">
 	<% if(typeof nombre_usuario === "undefined"){%>
 		<ul>
-			<li><a href="login.html">Login </a><span></span></li>
-			<li><a href="registro.html">Nuevo Usuario</a><span></span></li>
+			<li><a href="/usuario/login.html">Login </a><span></span></li>
+			<li><a href="/usuario/registro.html">Nuevo Usuario</a><span></span></li>
 		</ul>
 	<% } else { %>
 		<ul>
-			<li><a href="/desconectar.html">Desconectar </a><span></span></li>
-			<li><a href="/unirse_partida.html">Unirse a partida </a><span></span></li>
-			<li><a href="/nueva_partida.html">Crear partida </a><span></span></li>
+			<li><a href="/usuario/desconectar.html">Desconectar </a><span></span></li>
+			<li><a href="/partida/unirse_partida.html">Unirse a partida </a><span></span></li>
+			<li><a href="/partida/nueva_partida.html">Crear partida </a><span></span></li>
 		</ul>
 	<% }%>
 

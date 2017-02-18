@@ -27,7 +27,7 @@
 			<td><%= p.nombre %></td>
 			<td><%= p.fecha.getDate() %>/<%= p.fecha.getMonth()+1 %>/<%= p.fecha.getFullYear()%></td>
 			<td><%= p.numero_jugadores%>/<%= p.numero_maximo_jugadores%></td>
-			<td><a href="/cerrarPartida/<%= p.partida %>">Cerrar Partida</a></td>
+			<td><a href="/partida/cerrarPartida/<%= p.partida %>">Cerrar Partida</a></td>
 		</tr>
 		<% }); %>
 		
@@ -49,13 +49,13 @@
 		</tr>
 		<% partidas_activas.forEach(function(p) { %>
 		<% if(p.turno === nombre_usuario){ %>
-		<tr class="es-su-turno pointer" onclick="location='juego.html'">
+		<tr class="es-su-turno pointer" onclick="location='/juego/juego.html?id_partida=<%= p.id%>'">
 		<% }else{ %>
-		<tr class="pointer" onclick="location='juego.html'">
+		<tr class="pointer" onclick="location='/juego/juego.html?id_partida=<%= p.id%>'">
 		<% } %>
 		
 			<td><%= p.nombre %></td>
-			<td><%=  p.creador %></td>
+			<td><%= p.creador %></td>
 			<td><%= p.fecha.getDate() %>/<%= p.fecha.getMonth()+1 %>/<%= p.fecha.getFullYear()%></td>
 			<td><%= p.turno %></td>
 		</tr>
@@ -75,13 +75,9 @@
 		<tr>
 			<td><%= p.nombre %></td>
 			<td><%= p.creador %></td>
-			<% if(p.ganador === nombre_usuario){%>
-			<td>Sí</td>
-			<% }else{%>
-			<td>No</td>
-			<% }%>
+			<td><%= p.ha_ganado%></td>
 		</tr>
-		<% }); %>
+	<% }); %>
 	</table>
 </div>
 

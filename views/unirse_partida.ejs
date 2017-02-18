@@ -26,7 +26,7 @@
 			<td><%= p.fecha.getDate() %>/<%= p.fecha.getMonth()+1 %>/<%= p.fecha.getFullYear()%></td>
 			<td><%= p.numero_jugadores %>/<%= p.numero_maximo_jugadores%></td>
 			<td>
-				<a href="/unirsePartida/<%= p.id%>">Unirse</a>
+				<a href="/partida/unirsePartida/<%= p.id%>">Unirse</a>
 			</td>
 		</tr>
 		<% }); %>
